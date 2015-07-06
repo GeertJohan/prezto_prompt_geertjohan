@@ -1,6 +1,6 @@
 ## Prezto prompt geertjohan
 
-[![asciicast](https://asciinema.org/a/5c7cb3bgri0l4v5c310sbxrwx.png)](https://asciinema.org/a/5c7cb3bgri0l4v5c310sbxrwx?autoplay=1)
+[![asciicast](https://asciinema.org/a/e3n2bvd2j0acgpo6nj521mjtn.png)](https://asciinema.org/a/e3n2bvd2j0acgpo6nj521mjtn?autoplay=1)
 
 This is my custom prompt. It uses three lines to display some information.
  - The first line shows the previous program's exit status, including exit code when not zero. The first line also displays the time it took for the process to run when > 1 second (currently not displaying miliseconds).
