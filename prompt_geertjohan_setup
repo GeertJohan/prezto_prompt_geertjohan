@@ -43,7 +43,7 @@ function prompt_geertjohan_exitstatus {
   _prompt_geertjohan_exitstatus='%(?.%U%F{077}     ✔ .%F{160}%U     ✘ %u%F{white}%K{160} %? )%f%k'
 }
 
-function prompt_pure_preexec {
+function prompt_geertjohan_preexec {
   _prompt_geertjohan_cmdtimestamp=$SECONDS
 }
 
@@ -86,7 +86,7 @@ function prompt_geertjohan_setup {
 
   # Add hook for calling git-info before each command.
   add-zsh-hook precmd prompt_geertjohan_precmd
-  add-zsh-hook preexec prompt_pure_preexec
+  add-zsh-hook preexec prompt_geertjohan_preexec
 
   # Set editor-info parameters.
   zstyle ':prezto:module:editor:info:completing' format '%B%F{red}...%f%b'
