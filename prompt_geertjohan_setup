@@ -47,6 +47,12 @@ function prompt_geertjohan_preexec {
   _prompt_geertjohan_cmdtimestamp=$SECONDS
 }
 
+function prompt_geertjohan_ssh_hostname {
+  if [[ "$(ps -o comm= $PPID)" == "sshd" ]]; then
+    _prompt_geertjohan_ssh_hostname="%F{244}$(hostname):%f"
+  fi
+}
+
 function prompt_geertjohan_precmd {
   setopt LOCAL_OPTIONS
   unsetopt XTRACE KSH_ARRAYS
@@ -56,6 +62,9 @@ function prompt_geertjohan_precmd {
 
   # Prepare exitstatus line
   prompt_geertjohan_exitstatus
+
+  # Prepare ssh hostname
+  prompt_geertjohan_ssh_hostname
 
   # Get Git repository information.
   if (( $+functions[git-info] )); then
@@ -116,7 +125,7 @@ function prompt_geertjohan_setup {
 
   # Define prompts.
   PROMPT='${_prompt_geertjohan_exitstatus}%U%F{244}${_prompt_geertjohan_cmdhumantime_value}%f%u
-%B%F{yellow}${_prompt_geertjohan_pwd}%f%b${git_info:+${(e)git_info[prompt]}}$git_info[status]%(!. %B%F{red}#%f%b.) %f
+${_prompt_geertjohan_ssh_hostname}%B%F{yellow}${_prompt_geertjohan_pwd}%f%b${git_info:+${(e)git_info[prompt]}}$git_info[status]%(!. %B%F{red}#%f%b.) %f
 %B%F{red}$ %f%b'
   RPROMPT='${editor_info[overwrite]}%(?:: %F{red}⏎%f)'
   SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
