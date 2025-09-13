@@ -48,7 +48,7 @@ function prompt_geertjohan_preexec {
 }
 
 function prompt_geertjohan_ssh_hostname {
-  if [[ "$(ps -o comm= $PPID)" == "sshd" ]]; then
+  if [[ -n "$SSH_CONNECTION" ]]; then
     _prompt_geertjohan_ssh_hostname="%F{244}$(hostname):%f"
   fi
 }
